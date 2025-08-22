@@ -1,0 +1,17 @@
+# GWAS Summary Statistics
+GCST90435600.tsv filter=lfs diff=lfs merge=lfs
+	https://www.ebi.ac.uk/gwas/api/search/downloads?q=accessionId:GCST90435600&pvalfilter=&orfilter=&betafilter=&datefilter=&genomicfilter=&genotypingfilter[]=&traitfilter[]=&dateaddedfilter=&facet=association&efo=true
+
+# GTEx eQTL Data Files
+Breast_Mammary_Tissue.v8.egenes.txt filter=lfs diff=lfs merge=lfs
+	https://gtexportal.org/home/downloads/adult-gtex/GTEx_Analysis_v8_eQTL.tar.gz -> Breast_Mammary_Tissue.v8.egenes.txt
+
+Breast_Mammary_Tissue.v8.eqtl_signifpairs.txt filter=lfs diff=lfs merge=lfs
+	https://gtexportal.org/home/downloads/adult-gtex/GTEx_Analysis_v8_eQTL.tar.gz -> Breast_Mammary_Tissue.v8.eqtl_signifpairs.txt
+
+# GTEx Full Dataset (reference only - large file)
+GTEx_Analysis_v8_eQTL.tar.gz filter=lfs diff=lfs merge=lfs
+	https://gtexportal.org/home/downloads/adult-gtex/GTEx_Analysis_v8_eQTL.tar.gz
+
+# Ignore cleaned files (they can be regenerated from scripts)
+cleaned_gwas.tsv export-ignore
