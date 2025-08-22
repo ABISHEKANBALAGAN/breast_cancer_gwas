@@ -13,16 +13,16 @@ gwas <- fread("results/harmonized.tsv")
 
 # 1. Manhattan Plot (All Chromosomes)
 png("results/plots/manhattan.png", width=1200, height=400)
-manhattan(gwas, chr="CHR", bp="POS", p="P", snp="SNP",
+manhattan(gwas, chr="CHR", bp="POS", p="P_GC", snp="SNP",
           main="Breast Cancer GWAS - Harmonized Variants",
           suggestiveline=-log10(1e-5),
           genomewideline=-log10(5e-8))
 dev.off()
 
 # 2. QQ Plot (Check Inflation)
-lambda <- median(qchisq(gwas$P, df=1, lower.tail=F)) / qchisq(0.5, df=1)
+lambda <- median(qchisq(gwas$P_GC, df=1, lower.tail=F)) / qchisq(0.5, df=1)
 png("results/plots/qqplot.png", width=600, height=600)
-qq(gwas$P, main=paste("QQ Plot (λ =", round(lambda, 3), ")"),
+qq(gwas$P_GC, main=paste("QQ Plot (λ =", round(lambda, 3), ")"),
    col="blue", cex=1.5)
 grid()
 dev.off()
