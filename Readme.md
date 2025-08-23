@@ -102,21 +102,23 @@ Key aspects of the vision:
 ### Generate GWAS Plots
 `Rscript scripts/3_generate_plots.R`
 
-### Run Colocalisation
-`Rscript scripts/colocalisation.R`
-
 ### Bash commands to fix harmonized GC file
 ```bash
 # Remove quotes
 sed 's/"//g' results/harmonized_GC.tsv > results/harmonized_GC_nq.tsv
 
 # Fix variant_id and filter MAF
-cat results/harmonized_GC.tsv \
+cat results/harmonized_GC_nq.tsv \
   | sed 's/"//g' \
   | awk -F'\t' 'NR==1{print; next} {split($9,a," "); $9=a[1]; print}' OFS='\t' \
   | awk -F'\t' 'NR==1 || ($9>0 && $9<1)' \
   > results/harmonized_GC_fixed2.tsv
 ```
+
+### Run Colocalisation
+`Rscript scripts/colocalisation.R`
+
+
 
 ## Project Structure
 
